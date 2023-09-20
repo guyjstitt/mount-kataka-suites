@@ -38,13 +38,6 @@ const images = [
   },
 ];
 
-const styles = {
-  row: {
-    margin: 0,
-    padding: 0,
-  },
-};
-
 function App() {
 
   return (
