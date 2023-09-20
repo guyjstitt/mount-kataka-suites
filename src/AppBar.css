@@ -1,0 +1,12 @@
+.header-icon {
+    margin-right: 10px !important;
+    color: red;
+}
+
+header .MuiTypography-root {
+    color: red !important;
+}
+
+header.MuiPaper-root {
+    background-color: white;
+}
