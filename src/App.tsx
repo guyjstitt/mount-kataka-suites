@@ -4,10 +4,12 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import ImageGallery from "react-image-gallery";
+import Divider from '@mui/material/Divider';
 
 import './App.css';
-import AppBar from './AppBar';
 import MenuAppBar from './AppBar';
+import { Avatar, Typography } from '@mui/material';
+import ReserveCard from './Reserve';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -19,12 +21,12 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const images = [
   {
-    original: "https://picsum.photos/id/1018/1000/600/",
-    thumbnail: "https://picsum.photos/id/1018/250/150/",
+    original: "https://images.pexels.com/photos/1428348/pexels-photo-1428348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    thumbnail: "https://images.pexels.com/photos/1428348/pexels-photo-1428348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   },
   {
-    original: "https://picsum.photos/id/1015/1000/600/",
-    thumbnail: "https://picsum.photos/id/1015/250/150/",
+    original: "https://www.pexels.com/photo/brown-wooden-center-table-584399/",
+    thumbnail: "https://www.pexels.com/photo/brown-wooden-center-table-584399/",
   },
   {
     original: "https://picsum.photos/id/1019/1000/600/",
@@ -44,59 +46,76 @@ function App() {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid xs={12} sx={styles.row}>
-            <Item sx={styles.row}><MenuAppBar></MenuAppBar></Item>
+        <Grid container spacing={1}>
+          <Grid xs={12 }md={12} sx={styles.row}>
+            <MenuAppBar></MenuAppBar>
           </Grid>
-          <Grid container xs={12}>
-            <Grid xs={3}></Grid>
-            <Grid xs={6}>
-              <Item><ImageGallery items={images} /></Item>
+          <Grid container md={12}>
+            <Grid md={3}></Grid>
+            <Grid md={6} sx={styles.row}>
+              <ImageGallery items={images} />
             </Grid>
-            <Grid xs={3}></Grid>
+            <Grid md={3}></Grid>
           </Grid>
-          <Grid container xs={12}>
-            <Grid xs={3}></Grid>
-            <Grid container xs={4}>
-              <Grid xs={12}>Entire place hosted by guy</Grid>
-              <Grid container xs={12}>
-                <Grid xs={12}>Self check-in</Grid>
-                <Grid xs={12}>Guy is a super host</Grid>
-                <Grid xs={12}>Flexible</Grid>
+          <Grid container md={12}>
+            <Grid md={3}></Grid>
+            <Grid container md={4}>
+              <Grid xs={2}>
+                <Avatar alt="Remy Sharp" src="https://storage.cloud.google.com/mount-kataka-suites/guy.jpeg" />
+              </Grid>
+              <Grid xs> 
+                <Typography variant="subtitle1" gutterBottom>
+                  Private suite hosted by Guy
+                </Typography>
+              </Grid>
+              <Grid>
+                <Divider variant="middle" flexItem />
+              </Grid>
+              <Grid md={12}>
+                <Typography variant="body2" gutterBottom>Welcome to our fully furnished private suite, attached to the main home, where all utilities and high-speed internet are included. Nestled in a serene mountain community, this cozy retreat offers a spacious bedroom with a queen-sized bed and an en-suite bathroom. The living area boasts a comfortable seating arrangement and a flat-screen TV, while a well-equipped kitchenette allows for light meal preparation. Outside, a private patio or balcony offers stunning mountain views for your enjoyment. Located close to the Arrowhead golf course and nestled next to the mountains, this Airbnb promises a tranquil escape or an active outdoor adventure, providing the perfect blend of comfort and convenience in a beautiful natural setting.</Typography>
+              </Grid>
+              <Divider/>
+              <Grid container md={12}>
+                <Grid md={12}><Typography variant="subtitle1" gutterBottom>Self check-in</Typography></Grid>
+                <Grid md={12}><Typography variant="body2" gutterBottom>Easily check into the Airbnb using a convenient smart lock system.</Typography></Grid>
+                <Grid md={12}><Typography variant="subtitle1" gutterBottom>Guy is a super host</Typography></Grid>
+                <Grid md={12}><Typography variant="body2" gutterBottom>Meet Guy, your software architect Airbnb host in Colorado, who loves golf, gaming, and outdoor adventures. He lives in the main home with his two mini Labradoodles and is dedicated to ensuring your stay is comfortable and memorable, offering both technical expertise and local insights.</Typography></Grid>
+                <Grid md={12}><Typography variant="subtitle1" gutterBottom>Flexible</Typography></Grid>
+                <Grid md={12}><Typography variant="body2" gutterBottom>Discover the freedom of flexible leasing terms with our Airbnb! Whether you're looking to stay for a month, three months, or longer, we offer hassle-free options with no early cancellation fees or hidden charges. Your comfort and convenience are our top priorities – stay as long as you'd like, and leave whenever suits you best.</Typography></Grid>
               </Grid>
             </Grid> 
-            <Grid xs={2}>
-              <Item>Reserve</Item>
+            <Grid md={2}>
+              <ReserveCard></ReserveCard>
             </Grid>
-            <Grid xs={3}></Grid>
+            <Grid md={3}></Grid>
           </Grid>
-          <Grid container xs={12}>
-            <Grid xs={3}></Grid>
-            <Grid xs={6}>
+          <Grid container md={12}>
+            <Grid md={3}></Grid>
+            <Grid md={6}>
               <Item>Reviews</Item>
             </Grid>
-            <Grid xs={3}></Grid>
+            <Grid md={3}></Grid>
           </Grid>
-          <Grid container xs={12}>
-            <Grid xs={3}></Grid>
-            <Grid xs={6}>
-              <Item>Where you'll be</Item>
+          <Grid container md={12}>
+            <Grid md={3}></Grid>
+            <Grid md={6}>
+                <img src='https://storage.cloud.google.com/mount-kataka-suites/location.png'></img>
             </Grid>
-            <Grid xs={3}></Grid>
+            <Grid md={3}></Grid>
           </Grid>
-          <Grid container xs={12}>
-            <Grid xs={3}></Grid>
-            <Grid xs={6}>
+          <Grid container md={12}>
+            <Grid md={3}></Grid>
+            <Grid md={6}>
               <Item>Hosted by: Guy</Item>
             </Grid>
-            <Grid xs={3}></Grid>
+            <Grid md={3}></Grid>
           </Grid>
-          <Grid container xs={12}>
-            <Grid xs={3}></Grid>
-            <Grid xs={6}>
+          <Grid container md={12}>
+            <Grid md={3}></Grid>
+            <Grid md={6}>
               <Item>Things to know</Item>
             </Grid>
-            <Grid xs={3}></Grid>
+            <Grid md={3}></Grid>
           </Grid>
         </Grid>
       </Box>

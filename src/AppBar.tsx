@@ -11,7 +11,7 @@ export default function MenuAppBar() {
         <Toolbar>
           <CottageOutlinedIcon></CottageOutlinedIcon>
           <Typography variant="h6" component="div">
-            Mount Kataka Suites
+            Mt. Kataka Suites
           </Typography>
         </Toolbar>
       </AppBar>
