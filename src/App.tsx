@@ -139,7 +139,7 @@ function App() {
           <Grid container md={12}>
             <Grid md={2}></Grid>
             <Grid md={8}>
-              <Item>Things to know</Item>
+              <Item>Things to know about your stay</Item>
             </Grid>
             <Grid md={2}></Grid>
           </Grid>
