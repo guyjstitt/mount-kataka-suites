@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
-import ImageGallery from "react-image-gallery";
 import Divider from '@mui/material/Divider';
 
 import './App.css';
@@ -14,6 +13,8 @@ import ReserveCard from './Reserve';
 import ImageIcon from '@mui/icons-material/Image';
 import WorkIcon from '@mui/icons-material/Work';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import MapLocation from './MapLocation';
+import Gallery from './Gallery';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -22,21 +23,6 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-
-const images = [
-  {
-    original: "https://images.pexels.com/photos/1428348/pexels-photo-1428348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    thumbnail: "https://images.pexels.com/photos/1428348/pexels-photo-1428348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  },
-  {
-    original: "https://storage.cloud.google.com/mount-kataka-suites/airbnb-2.jpeg",
-    thumbnail: "https://storage.cloud.google.com/mount-kataka-suites/airbnb-2.jpeg",
-  },
-  {
-    original: "https://picsum.photos/id/1019/1000/600/",
-    thumbnail: "https://picsum.photos/id/1019/250/150/",
-  },
-];
 
 function App() {
 
@@ -50,7 +36,7 @@ function App() {
           <Grid container md={12}>
             <Grid md={2}></Grid>
             <Grid md={8}>
-              <ImageGallery items={images} />
+              <Gallery></Gallery>
             </Grid>
             <Grid md={2}></Grid>
           </Grid>
@@ -109,7 +95,7 @@ function App() {
               </Grid>
             </Grid> 
             <Grid md={3}>
-              <Grid xs display="flex" justifyContent="center" alignItems="center">
+              <Grid xs display="flex" justifyContent="center" alignItems="center" style={{ position: 'sticky', top: '64px', zIndex: 100000 }}>
                 <ReserveCard></ReserveCard>
               </Grid>
             </Grid>
@@ -123,11 +109,11 @@ function App() {
             <Grid md={2}></Grid>
           </Grid>
           <Grid container md={12}>
-            <Grid md={4}></Grid>
-            <Grid md={4}>
-                <img src='https://storage.cloud.google.com/mount-kataka-suites/location.png'></img>
+            <Grid md={2}></Grid>
+            <Grid md={8}>
+                <MapLocation></MapLocation>
             </Grid>
-            <Grid md={4}></Grid>
+            <Grid md={2}></Grid>
           </Grid>
           <Grid container md={12}>
             <Grid md={2}></Grid>

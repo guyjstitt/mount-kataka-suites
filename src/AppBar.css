@@ -10,3 +10,7 @@ header .MuiTypography-root {
 header.MuiPaper-root {
     background-color: white;
 }
+
+.react-datepicker-popper {
+z-index: 2000 !important;
+}
