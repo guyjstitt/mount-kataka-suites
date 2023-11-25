@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 interface IconMarker {
@@ -9,7 +10,8 @@ const MapLocation = () => {
   const mapStyles = {
     height: "50vh",
     width: "100%",
-    zIndex: 1
+    zIndex: 1,
+    minHeight: "300px"
   };
   
    const defaultCenter = {
@@ -22,17 +24,19 @@ const MapLocation = () => {
    })
 
    const iconMarker: IconMarker | undefined= isLoaded ? {
-      url: "https://storage.cloud.google.com/mt-kataka-villas/location-rental.png", // path to your icon
+      url: "https://storage.googleapis.com/mt-kataka-villas/location-rental.png", // path to your icon
       scaledSize: new window.google.maps.Size(50, 50), // size of the icon
    } : undefined;
   
    return isLoaded ? (
-      <GoogleMap
-        mapContainerStyle={mapStyles}
-        zoom={13}
-        center={defaultCenter}>
-        <Marker key="marker_1" position={defaultCenter} icon={iconMarker}/>
-      </GoogleMap>
+      <Box>
+         <GoogleMap
+         mapContainerStyle={mapStyles}
+         zoom={13}
+         center={defaultCenter}>
+         <Marker key="marker_1" position={defaultCenter} icon={iconMarker}/>
+         </GoogleMap>
+      </Box>
     ) : <></>
 }
 
