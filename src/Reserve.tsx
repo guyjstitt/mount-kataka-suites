@@ -1,15 +1,15 @@
 import React, { ForwardedRef, useState, } from 'react';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import Box from '@mui/material/Box';
 import { addMonths } from 'date-fns';
+import Box from '@mui/material/Box';
 
 interface CustomInputProps {
   label: string | null
@@ -55,12 +55,17 @@ export default function ReserveCard() {
       return;
     }
 
+      // Get only the date part of the dates
+    const startDateStripped = startDate && startDate.toISOString().slice(0, 10);
+    const endDateStripped = endDate && endDate.toISOString().slice(0, 10);
+
+
     const formData = {
       name,
       email,
       phone,
-      startDate,
-      endDate,
+      startDate: startDateStripped,
+      endDate: endDateStripped,
       comments
     };
   
@@ -147,7 +152,8 @@ export default function ReserveCard() {
         <Box mt={2}>
           <DatePicker
             selected={startDate}
-            onChange={(date: Date) => {
+            onChange={() => {}}
+            onSelect={(date: Date) => {
               setStartDate(date);
               if (!endDate || addMonths(date, 1) >= endDate) {
                 setEndDate(addMonths(date, 1));
@@ -162,7 +168,8 @@ export default function ReserveCard() {
         <Box mt={2}>
           <DatePicker
             selected={endDate}
-            onChange={(date: Date | null) => {
+            onChange={() => {}}
+            onSelect={(date: Date | null) => {
               if (date) {
                 setEndDate(date);
                 if (!startDate) {

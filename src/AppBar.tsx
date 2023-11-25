@@ -1,10 +1,11 @@
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
 
 import './AppBar.css';
+
+import Box from '@mui/material/Box';
 
 export default function MenuAppBar() {
   return (
