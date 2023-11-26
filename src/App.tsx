@@ -110,8 +110,8 @@ function App() {
                         <>
                           Stay for 1 month, 3 months, or as long as you'd like (30 day minimum). Please request a reservation or contact  
                           {' '}
-                          <a href="mailto:support@mtkatakasuites.com" style={{ textDecoration: 'none', color: 'blue' }}>
-                            support@mtkatakasuites.com
+                          <a href="mailto:support@mtkatakavillas.com" style={{ textDecoration: 'none', color: 'blue' }}>
+                            support@mtkatakavillas.com
                           </a> 
                           {' '}
                           for any special requests.
