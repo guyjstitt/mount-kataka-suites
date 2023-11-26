@@ -22,7 +22,7 @@ export default function MenuAppBar() {
           <Grid2 container md={2}/>
         </Grid2>
       </Box>
-      <Divider sx={{marginLeft: '-24px', marginRight: '-24px'}}/>
+      <Divider sx={{ marginLeft: '-24px', marginRight: '-24px', '@media (max-width:600px)': { marginLeft: '-16px', marginRight: '-16px' } }}/>
     </>
   );
 }
