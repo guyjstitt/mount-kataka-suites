@@ -1,25 +1,26 @@
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
-
 import './AppBar.css';
-
 import Box from '@mui/material/Box';
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
+import { Divider } from '@mui/material';
 
 export default function MenuAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="sticky" sx={{ zIndex: 1100 }}>
-        <Toolbar>
+      <Grid2 container md={12} style={{ margin: '20px 0' }}>
+        <Grid2 container md={2}/>
+        <Grid2 container md={8} justifyContent="flex-start" alignItems="center">
           <div className="header-icon">
-            <CottageOutlinedIcon></CottageOutlinedIcon>
+            <CottageOutlinedIcon fontSize="large" />
           </div>
-          <Typography variant="h6" component="div">
+          <Typography variant="h6" component="div" style={{ color: 'red' }}>
             Mount Kataka Villas
           </Typography>
-        </Toolbar>
-      </AppBar>
+        </Grid2>
+        <Grid2 container md={2}/>
+      </Grid2>
+      <Divider />
     </Box>
   );
 }

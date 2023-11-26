@@ -30,7 +30,8 @@ const MapLocation = () => {
   
    return isLoaded ? (
       <Box>
-         <GoogleMap
+         <GoogleMap 
+         id='map'
          mapContainerStyle={mapStyles}
          zoom={13}
          center={defaultCenter}>

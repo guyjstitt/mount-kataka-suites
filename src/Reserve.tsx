@@ -10,6 +10,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { addMonths } from 'date-fns';
 import Box from '@mui/material/Box';
+import { IconButton, Snackbar } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 interface CustomInputProps {
   label: string | null
@@ -39,7 +42,8 @@ export default function ReserveCard() {
   const [submitted, setSubmitted] = useState(false);
   const [startedInput, setStartedInput] = useState(false);
   const [comments, setComments] = useState('');
-
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\d{10,}$/;
@@ -47,6 +51,14 @@ export default function ReserveCard() {
   const isValidEmail = emailRegex.test(email);
   const isValidPhone = phoneRegex.test(phone);
 
+  const resetForm = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setStartDate(null);
+    setEndDate(null);
+    setComments('');
+  };
 
   const handleSubmit = () => {
     setSubmitted(true);
@@ -77,10 +89,24 @@ export default function ReserveCard() {
     },
     body: JSON.stringify(formData)
   })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
-  };
+  .then(response => {
+    if (response.ok) {
+      setSubmitStatus('We received your request and will get back to you as soon as possible!');
+      resetForm(); // Reset the form
+      setStartedInput(false);
+      setSubmitted(false);
+    } else {
+      throw new Error('Form submission failed');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    setSubmitStatus('We are experiencing technical difficulties. Please send an email directly to support@mtkatakavillas.com');
+  })
+  .finally(() => {
+    setOpenSnackbar(true);
+  });
+};
 
 
   const handleNameInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,7 +132,7 @@ export default function ReserveCard() {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardMedia
         component="img"
         alt="green iguana"
@@ -126,6 +152,7 @@ export default function ReserveCard() {
             value={name}
             onChange={handleNameInputChange(setName)}
             required
+            helperText={ !name && (submitted || startedInput) ? 'Name is required' : ''}
             error={!name && (submitted || startedInput)}
           />
         </Box>
@@ -162,29 +189,35 @@ export default function ReserveCard() {
             selectsStart
             startDate={startDate}
             endDate={endDate}
+            minDate={new Date()} 
             customInput={<CustomInput label="Check in" value={null} onClick={() => {}} />}
           />
         </Box>
         <Box mt={2}>
-          <DatePicker
-            selected={endDate}
-            onChange={() => {}}
-            onSelect={(date: Date | null) => {
-              if (date) {
-                setEndDate(date);
-                if (!startDate) {
-                  setStartDate(addMonths(date, -1));
-                } else if (date <= addMonths(startDate, 1)) {
-                  setStartDate(null);
+          <Box style={{ marginBottom: '3px'}}>
+            <DatePicker
+              selected={endDate}
+              onChange={() => {}}
+              onSelect={(date: Date | null) => {
+                if (date) {
+                  setEndDate(date);
+                  if (!startDate) {
+                    setStartDate(addMonths(date, -1));
+                  } else if (date <= addMonths(startDate, 1)) {
+                    setStartDate(null);
+                  }
                 }
-              }
-            }}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate && addMonths(startDate, 1)}
-            customInput={<CustomInput label="Check out" value={null} onClick={() => {}} />}
-          />
+              }}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate && addMonths(startDate, 1)}
+              customInput={<CustomInput label="Check out" value={null} onClick={() => {}}  />}
+            />
+          </Box>
+          <Typography variant="caption" color="textSecondary" style={{ fontSize: '0.75rem', marginLeft: '14px', lineHeight: '1.66' }}>
+            Must be at least 30 days after check in
+          </Typography>
         </Box>
         <Box mt={2}>
           <TextField
@@ -208,6 +241,19 @@ export default function ReserveCard() {
           Request Reservation
       </Button>
       </CardActions>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={30000}
+        onClose={() => setOpenSnackbar(false)}
+        message={submitStatus}
+        action={
+          <IconButton size="small" aria-label="close" color="inherit" onClick={() => setOpenSnackbar(false)}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        }
+        aria-live="polite" // ARIA attribute for accessibility
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }} // Change the position of the Snackbar
+      />
     </Card>
   );
 }

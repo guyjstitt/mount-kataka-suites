@@ -9,19 +9,19 @@ const images = [
   {
     img: "https://storage.googleapis.com/mt-kataka-villas/living-2.jpg",
     title: 'Living room',
-    rows: 2,
-    cols: 1,
+    rows: 3,
+    cols: 2,
   },
   {
     img: "https://storage.googleapis.com/mt-kataka-villas/living-1.jpg",
     title: 'Living Room',
-    rows: 1,
+    rows: 2,
     cols: 1,
   },
   {
     img: "https://storage.googleapis.com/mt-kataka-villas/kitchen.jpg",
     title: 'Kitchen',
-    rows: 1,
+    rows: 5,
     cols: 1,
   },
   {
@@ -31,21 +31,15 @@ const images = [
     cols: 1,
   },
   {
-    img: "https://storage.googleapis.com/mt-kataka-villas/bed-1.jpg",
-    title: 'Bedroom',
-    rows: 1,
-    cols: 1,
-  },
-  {
     img: "https://storage.googleapis.com/mt-kataka-villas/bed-2.jpg",
     title: 'Bedroom',
-    rows: 1,
+    rows: 4,
     cols: 1,
   },
   {
     img: "https://storage.googleapis.com/mt-kataka-villas/laundry.jpg",
     title: 'Laundry',
-    rows: 1,
+    rows: 2,
     cols: 1,
   },
 ];
