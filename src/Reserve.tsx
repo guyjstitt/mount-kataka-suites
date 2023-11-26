@@ -3,15 +3,17 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { addMonths } from 'date-fns';
+import { addMonths, set } from 'date-fns';
 import Box from '@mui/material/Box';
 import { IconButton, Snackbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 interface CustomInputProps {
@@ -30,6 +32,7 @@ const CustomInput = React.forwardRef(( props: CustomInputProps, ref: ForwardedRe
     fullWidth
     placeholder="mm/dd/yyyy"
     ref={ref}
+    InputProps={{ readOnly: true }} 
   />
 ));
 
@@ -44,6 +47,7 @@ export default function ReserveCard() {
   const [comments, setComments] = useState('');
   const [submitStatus, setSubmitStatus] = useState<string | null>(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\d{10,}$/;
@@ -62,6 +66,7 @@ export default function ReserveCard() {
 
   const handleSubmit = () => {
     setSubmitted(true);
+    setLoading(true);
     if (!name || (!email && !phone)) {
 
       return;
@@ -105,6 +110,7 @@ export default function ReserveCard() {
   })
   .finally(() => {
     setOpenSnackbar(true);
+    setLoading(false);
   });
 };
 
@@ -132,19 +138,29 @@ export default function ReserveCard() {
   };
 
   return (
-    <Card>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image="https://storage.cloud.google.com/mount-kataka-suites/arrowhead.jpg"
-      />
+    <Card style={{ width: '100%' }}>
       <CardContent>
+        {loading && (
+            <Box
+              position="absolute"
+              top={0}
+              left={0}
+              width="100%"
+              height="100%"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              bgcolor="rgba(0, 0, 0, 0.5)"
+              zIndex={2}
+            >
+              <CircularProgress />
+            </Box>
+          )}
         <Typography gutterBottom variant="h5" component="div">
           Reserve your stay
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Fill out a short application and Guy will get back to you as soon as possible!
+        <Typography variant="body2">
+          Let us know your contact info and preferred dates. We'll get back to you as soon as possible!
         </Typography>
         <Box mt={2}>
           <TextField

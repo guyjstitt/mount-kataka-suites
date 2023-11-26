@@ -18,6 +18,7 @@ import FurnitureIcon from '@mui/icons-material/Weekend';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import HomeIcon from '@mui/icons-material/Home';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import Summary from './Summary';
 
 
 function App() {
@@ -65,11 +66,11 @@ function App() {
             <Grid container md={5}>
               <Grid container alignItems="center" justifyContent="space-between" sx={{width: '100%'}}>
                 <Grid> 
-                  <Typography variant="subtitle1" gutterBottom>
+                  <Typography variant="h5" gutterBottom>
                     Private suite hosted by Virginia and Guy
                   </Typography>
-                  <Typography variant="subtitle2" gutterBottom>
-                    1 Br. 1 Bath 700 sq. ft.
+                  <Typography variant="body2" gutterBottom>
+                    2 guests <span style={{ margin: '0 1px' }}> · </span> 1 Bedroom <span style={{ margin: '0 1px' }}> · </span> 1 Bath
                   </Typography>
                 </Grid>
                 <Grid style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -85,7 +86,7 @@ function App() {
                         <DirectionsCarIcon />
                       </Avatar>
                     </ListItemAvatar>
-                    <ListItemText style={{ marginTop: 0 }} primary="Close to Work and Adventures" secondary="12 minutes from UCHealth Highlands Ranch, 5 minutes to Lockheed Martin, 5 minutes to Arrowhead golf course, and right next to Chatfield State Park." />
+                    <ListItemText style={{ marginTop: 0 }} primary="Close to Work and Adventures" secondary="12 minutes to UCHealth Highlands Ranch, 5 minutes to Lockheed Martin, 5 minutes to Arrowhead golf course, and right next to Chatfield State Park." />
                   </ListItem>
                   <ListItem style={{ display: 'flex', alignItems: 'start' }}>
                     <ListItemAvatar>
@@ -117,15 +118,17 @@ function App() {
                       } />
                   </ListItem>
                 </List>
+                <Divider></Divider>
               </Grid>
               <Grid md={12}>
-                <Divider></Divider>
-                <Box>
-                  <Typography mt={2} mb={2} variant="body2" gutterBottom>Welcome to our fully furnished private suite, attached to the main home, where all utilities and high-speed internet are included. Nestled in a serene mountain community, this cozy retreat offers a spacious bedroom with a queen-sized bed and an en-suite bathroom. The living area boasts a comfortable seating arrangement and a flat-screen TV, while a well-equipped kitchenette allows for light meal preparation. Outside, a private patio or balcony offers stunning mountain views for your enjoyment. Located close to the Arrowhead golf course and nestled next to the mountains, this Airbnb promises a tranquil escape or an active outdoor adventure, providing the perfect blend of comfort and convenience in a beautiful natural setting.</Typography>
+                <Box display="flex">
+                  <Typography variant="h5" gutterBottom>
+                    Discover the Charm of Littleton, Colorado
+                  </Typography>
                 </Box>
-                <Divider></Divider>
+                <Summary></Summary>
+                <Divider sx={{ marginTop: '20px'}}></Divider>
               </Grid>
-              <Divider/>
               <Grid xs={12} sm={8} md={8}>
                 <Box display="flex">
                   <Typography variant="h5">Everything's included</Typography>
@@ -139,17 +142,17 @@ function App() {
                   <Divider></Divider>
                 </Grid>
               </Grid>
-              <Grid container md={12}>
+              {/* <Grid container md={12}>
                 <Grid md={12}><Typography variant="subtitle1" gutterBottom>Self check-in</Typography></Grid>
                 <Grid md={12}><Typography variant="body2" gutterBottom>Easily check into the Airbnb using a convenient smart lock system.</Typography></Grid>
                 <Grid md={12}><Typography variant="subtitle1" gutterBottom>Guy is a super host</Typography></Grid>
                 <Grid md={12}><Typography variant="body2" gutterBottom>Meet Guy, your software architect Airbnb host in Colorado, who loves golf, gaming, and outdoor adventures. He lives in the main home with his two mini Labradoodles and is dedicated to ensuring your stay is comfortable and memorable, offering both technical expertise and local insights.</Typography></Grid>
                 <Grid md={12}><Typography variant="subtitle1" gutterBottom>Flexible</Typography></Grid>
                 <Grid md={12}><Typography variant="body2" gutterBottom>Discover the freedom of flexible leasing terms with our Airbnb! Whether you're looking to stay for a month, three months, or longer, we offer hassle-free options with no early cancellation fees or hidden charges. Your comfort and convenience are our top priorities – stay as long as you'd like, and leave whenever suits you best.</Typography></Grid>
-              </Grid>
+              </Grid> */}
             </Grid> 
             <Grid sm={12} md={3}>
-              <Grid xs display="flex" justifyContent="flex-end" alignItems="center" style={{ position: 'sticky', top: '64px', zIndex: 100000 }}>
+              <Grid xs display="flex" justifyContent="flex-end" alignItems="center" style={{ position: 'sticky', top: '64px', zIndex: 100 }}>
                 <ReserveCard></ReserveCard>
               </Grid>
             </Grid>
