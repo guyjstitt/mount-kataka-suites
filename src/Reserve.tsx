@@ -65,12 +65,13 @@ export default function ReserveCard() {
 
   const handleSubmit = () => {
     setSubmitted(true);
-    setLoading(true);
     if (!name || (!email && !phone)) {
 
       return;
     }
 
+    setLoading(true);
+    
       // Get only the date part of the dates
     const startDateStripped = startDate && startDate.toISOString().slice(0, 10);
     const endDateStripped = endDate && endDate.toISOString().slice(0, 10);
