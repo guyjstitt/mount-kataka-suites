@@ -72,9 +72,10 @@ function App() {
                   <Typography variant="body2" gutterBottom>
                     2 guests <span style={{ margin: '0 1px' }}> · </span> 1 Bedroom <span style={{ margin: '0 1px' }}> · </span> 1 Bath
                   </Typography>
+                  <Typography variant="subtitle2">$1950/month</Typography>
                 </Grid>
                 <Grid style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <Avatar alt="Remy Sharp" src="https://storage.cloud.google.com/mount-kataka-suites/guy.jpeg" />
+                  <Avatar alt="Remy Sharp" src="https://storage.googleapis.com/mt-kataka-villas/guy-virginia.jpg" />
                 </Grid>
               </Grid>
               <Grid md={12}>
