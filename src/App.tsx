@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-    <Container maxWidth={false}>
+    <Container maxWidth={false} sx={{ overflowX: 'hidden' }}>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
           <Grid xs={12 }md={12}>
