@@ -62,7 +62,7 @@ export default function Summary() {
             </Typography>
 
             <Typography variant="body1" paragraph>
-              Whether staying for a month or longer, our flexible leasing options make your journey stress-free. Join us for an experience where every detail is tailored for your comfort and convenience, nestled in the picturesque landscape of Littleton. Your Coloado adventure awaits!
+              Whether staying for a month or longer, our flexible leasing options make your journey stress-free. Join us for an experience where every detail is tailored for your comfort and convenience, nestled in the picturesque landscape of Littleton. Your Colorado adventure awaits!
             </Typography>
           </Box>
         </Dialog>
